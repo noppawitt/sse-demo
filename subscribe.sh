@@ -1,0 +1,1 @@
+curl -N localhost:8080/progress?taskid=$1

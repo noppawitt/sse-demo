@@ -27,6 +27,11 @@ func handleStart(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
 
+	sec, err := strconv.Atoi(r.URL.Query().Get("sec"))
+	if err != nil {
+		sec = 20
+	}
+
 	currentTaskID++
 	id := currentTaskID
 	task := &task{
@@ -38,7 +43,7 @@ func handleStart(w http.ResponseWriter, r *http.Request) {
 	}
 	tasks[id] = task
 
-	go task.run(20)
+	go task.run(sec)
 
 	w.Write([]byte(strconv.Itoa(id) + "\n"))
 }

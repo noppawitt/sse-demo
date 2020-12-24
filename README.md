@@ -1,5 +1,5 @@
 # Getting Started
-This project simulates how to subscribe a long task progress using Server Sent Event (SSE).
+This project simulates how to subscribe a long task progress using Server-Sent Events (SSE).
 
 ## Setup
 ```

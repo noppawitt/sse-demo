@@ -25,6 +25,7 @@ func main() {
 func handleStart(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
 	}
 
 	sec, err := strconv.Atoi(r.URL.Query().Get("sec"))
@@ -51,11 +52,13 @@ func handleStart(w http.ResponseWriter, r *http.Request) {
 func handleTrackProgress(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
 	}
 
 	taskID, err := strconv.Atoi(r.URL.Query().Get("taskid"))
 	if err != nil {
 		http.Error(w, "Invalid task ID", http.StatusBadRequest)
+		return
 	}
 
 	currentSubscriberID++
